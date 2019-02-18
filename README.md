@@ -1,2 +1,0 @@
-# Scrape-HW
-Scraping App 
