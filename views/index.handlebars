@@ -1,0 +1,82 @@
+<head>
+  <meta charset="UTF-8">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+.jumbotron {
+    /* margin-top:20px; */
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRVl_tqknTTMq0rqCILNXrH2dygrqNHi8HJpQ8g5O_OD-g4gE9");
+    /* background-size:cover; */
+    color: white;
+  }
+
+  .overlay {
+    height: 300px;
+    width: 100%;
+  }
+  </style>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Mongo Scraper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="savearticle" href="/saved">Saved Articles</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-danger scrape-new" href="/scrape">Scrape New Articles</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-danger scrape-new" id ="savenote" href="/articles/id">Notes</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-danger clear" href="#">Clear Articles</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <title>Scraping With Mongoose</title>
+<div class="container-fluid">
+        <div class="jumbotron text-center background-image">
+            <div class="overlay">
+                <div class="caption">
+                    <h1 class="display-1 text-white">Mongo NYPost Scraper</h1>
+                    {{!-- <h2 class="text-white">Get your news here!</h2> --}}
+                </div>
+            </div>
+        </div>
+    <div class=row>
+        <div class="col-12">
+            {{#if articles}}
+            {{#each articles}}
+                <div class="card w-90">
+                    <div class="card-header text-white bg-primary">
+                        <a href={{link}} target="_blank" class="text-white">
+                            <h2>{{title}}</h2>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{summary}}
+                        </p>
+                        <button id="{{_id}}" class="btn btn-primary save-btn">Save Article</button>
+                    </div>
+                </div>
+            {{/each}}
+            {{else}}
+                <div class="card text-white bg-warning w-90 p-1">
+                    <div class="card-body text-center">
+                        Uh oh. Looks like we don't have any new articles
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
