@@ -29,34 +29,58 @@ axios.get("http://nypost.com/").then(function (response) {
         .children('.excerpt')
         .text().trim() ;
 
-        
-        if (result.title && result.link && result.summary){
+        db.Article.create(result)
+            .then(function(dbArticle) {
+            console.log(dbArticle);
+  })
+            .catch(function(err) {
+            console.log(err.message);
+  });
+
+        // if (result.title && result.link && result.summary){
 // Create a new Article using the `result` object built from scraping(above), but only if both values are present
-            db.Article.create(result)
-                .then(function (dbArticle) {
-                    count++;
-                })
-                .catch(function (err) {
-                    // If an error occurred, send it to the client
-                    return res.json(err);
-                });
-        };
-    });
-    // If we were able to successfully scrape and save an Article, redirect to index
-    res.redirect('/');
-// else if (error || response.statusCode != 200){
-//     res.send("Error: Unable to obtain new articles")
-// }
-// });
-// });
-    
+//             db.Article.create(result)
+//                 .then(function (dbArticle) {
+//                     count++;
+//                 })
+//                 .catch(function (err) {
+//                     // If an error occurred, send it to the client
+//                 res.json(err);
+//                 });
+//         };
 //     });
+//     // If we were able to successfully scrape and save an Article, redirect to index
+//     res.redirect('/');
+// // else if (error || response.statusCode != 200){
+// //     res.send("Error: Unable to obtain new articles")
+// // }
+// // });
+// // });
+    
+    });
 });
 
 });
 
 
-
+// Clear the DB
+router.get("/clearall", function(req, res) {
+    // Remove every note from the notes collection
+    db.Article.deleteMany({}, function(error, response) {
+      // Log any errors to the console
+      if (error) {
+        console.log(error);
+        res.send(error);
+      }
+      else {
+        // Otherwise, send the mongojs response to the browser
+        // This will fire off the success function of the ajax request
+        console.log(response);
+        res.send(response);
+      }
+    });
+  });
+  
 router.get("/", (req, res) => {
     db.Article.find({})
         .then(function (dbArticle) {
@@ -184,4 +208,6 @@ router.delete("/note/:id", function (req, res) {
         });
 });
 
-module.exports = router;
+
+
+module.exports = router
