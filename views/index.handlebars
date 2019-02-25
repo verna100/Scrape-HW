@@ -66,14 +66,15 @@
                         <p class="card-text">
                             {{summary}}
                         </p>
-                        <button id="{{_id}}" class="btn btn-primary save-btn">Save Article</button>
+                        <button id="{{_id}}" class="btn btn-primary save-btn" href ="/saved">Save Article </button>
+                           <button id="data-id" class="btn btn-danger save-btn">Add note</button>
                     </div>
                 </div>
             {{/each}}
             {{else}}
                 <div class="card text-white bg-warning w-90 p-1">
                     <div class="card-body text-center">
-                        Uh oh. Looks like we don't have any new articles
+                         Looks like we don't have any new articles
                     </div>
                 </div>
             {{/if}}
