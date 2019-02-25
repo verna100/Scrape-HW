@@ -37,8 +37,7 @@ app.use(express.static("public"));
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapedHW";
 
-mongoose.connect(MONGODB_URI);
-mongoose.connect("mongodb://localhost/scrapedHW", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
