@@ -9,7 +9,7 @@ const cheerio = require("cheerio");
 const db = require("./models");
 
 // PORT
-const PORT = 3000;
+let PORT = process.env.PORT || 3000;
 
 // Initialize Express
 const app = express();
