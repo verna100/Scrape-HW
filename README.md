@@ -16,7 +16,7 @@ Once installed npm start to run it and it will guide you to http://localhost:300
 **What you can do:**
 
 
--Scrape new news articles
+-Scrape new news articles (when you press the scrape new articles button it will scrape for new news since the last scrape. Go to Home to see the new articles displayed)
 -Clear all news articles
 -Save articles you want to read later
 -Add notes to articles.

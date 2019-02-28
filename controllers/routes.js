@@ -32,10 +32,12 @@ axios.get("http://nypost.com/").then(function (response) {
         db.Article.create(result)
             .then(function(dbArticle) {
             console.log(dbArticle);
+            // alert("articles successfully scraped, press Home to see");
   })
             .catch(function(err) {
             console.log(err.message);
   });
+  
 
         // if (result.title && result.link && result.summary){
 // Create a new Article using the `result` object built from scraping(above), but only if both values are present
