@@ -31,13 +31,13 @@
           <a class="nav-link" id="savearticle" href="/saved">Saved Articles</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-danger scrape-new" href="/scrape">Scrape New Articles</a>
+          <a class="btn btn-danger scrape-new" href="#">Scrape New Articles</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-danger scrape-new" id ="savenote" href="/articles/id">Notes</a>
+          <a class="btn btn-danger" id ="savenote" href="/articles/id">Notes</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-danger clear" href="/clearall">Clear Articles</a>
+          <a class="btn btn-danger clear" href="#">Clear Articles</a>
         </li>
       </ul>
     </div>
@@ -67,7 +67,7 @@
                             {{summary}}
                         </p>
                         <button id="{{_id}}" class="btn btn-primary save-btn" href ="/saved">Save Article </button>
-                           <button id="data-id" class="btn btn-danger save-btn">Add note</button>
+                           <button id="data-id" class="btn btn-danger savenote">Add note</button>
                     </div>
                 </div>
             {{/each}}

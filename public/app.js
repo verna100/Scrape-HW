@@ -1,15 +1,31 @@
+var dbData;
+
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
-  // For each one
+  dbData=  JSON.stringify(data);
+    // For each one
   for (var i = 0; i < 5; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<button data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + data[i].summary + "</p>");
+    $("#articles").append("<p>" + data[0] + "<br />" + data[0][i].link + data[0][i].summary + "</p>");
+    // $("#articles").append("<p>" + data[0][i].title + "<br />" + data[0][i].link + data[0][i].summary + "</p>");
   }
 });
 
+$(document).on("click", ".scrape-new", function(){
+  $.getJSON("/scrape", function(data){
+    location.reload();
+  })
+})
+
+$(document).on("click", ".clear", function(){
+  $.getJSON("/clearall", function(data){
+    location.reload();
+  })
+})
+
 
 // Whenever someone clicks a p tag
-$(document).on("click", "add note", function() {
+$(document).on("click", "add-btn", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
